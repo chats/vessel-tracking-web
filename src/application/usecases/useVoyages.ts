@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { VoyageData } from '../../domain/entities/Voyage';
+import type { VoyageData } from '../../domain/entities/Voyage';
 import { voyageApi } from '../../infrastructure/api/voyageApi';
 
 export const useVoyages = () => {

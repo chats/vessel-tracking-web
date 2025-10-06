@@ -32,13 +32,15 @@ src/
 
 ## 🚀 การติดตั้งและรันโปรเจกต์
 
-### ติดตั้ง Dependencies
+### วิธีที่ 1: รันด้วย Bun (Local Development)
+
+#### ติดตั้ง Dependencies
 
 ```bash
 bun install
 ```
 
-### ตั้งค่า Environment Variables
+#### ตั้งค่า Environment Variables
 
 แก้ไขไฟล์ `.env` เพื่อกำหนด API endpoint และ API Key:
 
@@ -47,13 +49,61 @@ VITE_API_BASE_URL=http://localhost:8080
 VITE_API_KEY=your-api-key-here
 ```
 
-### รันโปรเจกต์
+#### รันโปรเจกต์
 
 ```bash
 bun run dev
 ```
 
 เปิดเบราว์เซอร์ที่ http://localhost:5173
+
+---
+
+### วิธีที่ 2: รันด้วย Docker
+
+#### Development Mode
+
+```bash
+# รัน development server ด้วย hot reload
+docker-compose -f docker-compose.dev.yaml up
+
+# หรือรันใน background
+docker-compose -f docker-compose.dev.yaml up -d
+```
+
+เปิดเบราว์เซอร์ที่ http://localhost:5173
+
+#### Production Mode
+
+```bash
+# Build และรัน production
+docker-compose up --build
+
+# หรือรันใน background
+docker-compose up -d
+```
+
+เปิดเบราว์เซอร์ที่ http://localhost:3000
+
+#### หยุดการทำงาน
+
+```bash
+# Development
+docker-compose -f docker-compose.dev.yaml down
+
+# Production
+docker-compose down
+```
+
+#### ดู Logs
+
+```bash
+# Development
+docker-compose -f docker-compose.dev.yaml logs -f
+
+# Production
+docker-compose logs -f
+```
 
 ## 👥 ผู้ใช้งานทดสอบ
 
@@ -117,9 +167,23 @@ Headers:
 - Ant Design
 - Day.js
 - Bun
+- Docker & Docker Compose
+- Nginx (สำหรับ production)
+
+## 🐳 Docker Files
+
+โปรเจกต์มี Docker configuration หลายแบบ:
+
+- **Dockerfile** - Production build (multi-stage) ใช้ Nginx
+- **Dockerfile.dev** - Development build พร้อม hot reload
+- **docker-compose.yaml** - Production deployment
+- **docker-compose.dev.yaml** - Development environment
+- **nginx.conf** - Nginx configuration สำหรับ production
 
 ## 📝 หมายเหตุ
 
 - ระบบใช้ Fake Authentication โดยเก็บข้อมูลใน localStorage
 - ข้อมูล child (Checkpoints และ GPS Tracking) จะถูกเรียงลำดับตามเวลาโดยอัตโนมัติ
 - สามารถกด Refresh เพื่อโหลดข้อมูลใหม่ได้
+- Production build ใช้ Nginx เพื่อ serve static files และรองรับ client-side routing
+- Development mode รองรับ hot reload ผ่าน volume mounting

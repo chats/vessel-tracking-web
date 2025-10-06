@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User } from '../../domain/entities/User';
+import type { User } from '../../domain/entities/User';
 import { fakeAuth } from '../../infrastructure/auth/fakeAuth';
 
 export const useAuth = () => {

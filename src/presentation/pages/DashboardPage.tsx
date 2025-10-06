@@ -2,7 +2,7 @@ import { Layout, Button, Space, Avatar } from 'antd';
 import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { VoyageList } from '../components/VoyageList';
 import { useVoyages } from '../../application/usecases/useVoyages';
-import { User } from '../../domain/entities/User';
+import type { User } from '../../domain/entities/User';
 
 const { Header, Content } = Layout;
 

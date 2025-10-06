@@ -1,4 +1,4 @@
-import { User } from '../../domain/entities/User';
+import type { User } from '../../domain/entities/User';
 
 export const FAKE_USERS: User[] = [
   { id: '1', username: 'captain1', password: 'pass123', name: 'Captain John', role: 'Captain' },

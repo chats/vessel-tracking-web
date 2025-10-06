@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Frontend Application
+  voyage-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: voyage-tracking-frontend
+    ports:
+      - "3000:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - voyage-network
+
+  # Optional: Backend API (uncomment if you want to run backend in Docker)
+  # voyage-backend:
+  #   image: your-backend-image:latest
+  #   container_name: voyage-tracking-backend
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - DATABASE_URL=your-database-url
+  #   restart: unless-stopped
+  #   networks:
+  #     - voyage-network
+
+networks:
+  voyage-network:
+    driver: bridge

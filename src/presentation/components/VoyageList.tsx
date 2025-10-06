@@ -1,6 +1,6 @@
 import { List, Tag, Collapse, Descriptions, Spin, Alert, Button } from 'antd';
 import { ReloadOutlined, EnvironmentOutlined, DashboardOutlined } from '@ant-design/icons';
-import { VoyageData, Checkpoint, GpsTrack } from '../../domain/entities/Voyage';
+import type { VoyageData, Checkpoint, GpsTrack } from '../../domain/entities/Voyage';
 import { formatDateTime } from '../../shared/utils/dateUtils';
 import { STATUS_CONFIG } from '../../shared/constants/statusConfig';
 
