@@ -39,11 +39,13 @@ export const LoginForm = ({ onLogin }: LoginFormProps) => {
             </Button>
           </Form.Item>
         </Form>
+        {/*
         <div style={{ marginTop: 16, fontSize: 12, color: '#888' }}>
           <p>ผู้ใช้ทดสอบ:</p>
           <p>captain1 / pass123</p>
           <p>admin / admin123</p>
         </div>
+        */}
       </Card>
     </div>
   );

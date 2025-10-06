@@ -16,7 +16,10 @@ export const VoyageList = ({ voyages, loading, error, onRefresh }: VoyageListPro
     return [...items].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
   };
 
-  const renderCheckpoints = (checkpoints: Checkpoint[]) => {
+  const renderCheckpoints = (checkpoints: Checkpoint[] | undefined) => {
+    if (!checkpoints || checkpoints.length === 0) {
+      return <p style={{ padding: 16, color: '#999' }}>ไม่มีข้อมูล Checkpoints</p>;
+    }
     const sorted = sortByTimestamp(checkpoints);
     return (
       <List
@@ -42,7 +45,10 @@ export const VoyageList = ({ voyages, loading, error, onRefresh }: VoyageListPro
     );
   };
 
-  const renderGpsTracks = (tracks: GpsTrack[]) => {
+  const renderGpsTracks = (tracks: GpsTrack[] | undefined) => {
+    if (!tracks || tracks.length === 0) {
+      return <p style={{ padding: 16, color: '#999' }}>ไม่มีข้อมูล GPS Tracking</p>;
+    }
     const sorted = sortByTimestamp(tracks);
     return (
       <List
@@ -119,13 +125,13 @@ export const VoyageList = ({ voyages, loading, error, onRefresh }: VoyageListPro
                   items={[
                     {
                       key: 'checkpoints',
-                      label: `Checkpoints (${checkpoints.length})`,
-                      children: checkpoints.length > 0 ? renderCheckpoints(checkpoints) : <p>ไม่มีข้อมูล</p>,
+                      label: `Checkpoints (${checkpoints?.length || 0})`,
+                      children: renderCheckpoints(checkpoints),
                     },
                     {
                       key: 'gps',
-                      label: `GPS Tracking (${gps_tracks.length})`,
-                      children: gps_tracks.length > 0 ? renderGpsTracks(gps_tracks) : <p>ไม่มีข้อมูล</p>,
+                      label: `GPS Tracking (${gps_tracks?.length || 0})`,
+                      children: renderGpsTracks(gps_tracks),
                     },
                   ]}
                 />

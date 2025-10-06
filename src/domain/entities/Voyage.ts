@@ -38,8 +38,8 @@ export interface GpsTrack {
 
 export interface VoyageData {
   voyage: Voyage;
-  checkpoints: Checkpoint[];
-  gps_tracks: GpsTrack[];
+  checkpoints?: Checkpoint[];
+  gps_tracks?: GpsTrack[];
 }
 
 export interface VoyageResponse {

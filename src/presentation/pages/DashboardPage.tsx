@@ -17,7 +17,7 @@ export const DashboardPage = ({ user, onLogout }: DashboardPageProps) => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Header style={{ background: '#001529', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1 style={{ color: '#fff', margin: 0 }}>🚢 ระบบติดตามการเดินเรือ</h1>
+        <h1 style={{ color: '#fff', margin: 0 }}>🚢 (POC) ระบบติดตามการเดินเรือ</h1>
         <Space>
           <Avatar icon={<UserOutlined />} />
           <span style={{ color: '#fff' }}>{user.name} ({user.role})</span>
